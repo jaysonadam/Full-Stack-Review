@@ -1,0 +1,119 @@
+Body {
+    margin: 0;
+    height: 100%;
+}
+
+.box-image {
+    display: flex;
+    flex-direction: row;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: gainsboro;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
+.image {
+    width: 100%;
+    position: relative;
+}
+
+img {
+    width: 100%;
+}
+
+.box {
+    margin: 0;
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-1 {
+    background-color: aquamarine;
+    position: relative;
+    flex: 1;
+    max-width: 550px;
+    height: 200px;
+    margin: 10px;
+}
+
+.card-2 {
+    background-color: rgb(138, 127, 255);
+    position: relative;
+    flex: 1;
+    max-width: 375px;
+    height: 250px;
+    margin: 10px;
+}
+
+.card-3 {
+    background-color: rgb(255, 127, 168);
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 250px;
+    margin: 10px;
+}
+
+@media (max-width: 1000px) {
+    .card-1 {
+        flex: 100%;
+        max-width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-2 {
+        flex: 100%;
+        max-width: 800px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    .card-3 {
+        flex: 100%;
+        max-width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+}
+
+.option {
+    background-color: aquamarine;
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.footer{
+    background-color: blue;
+
+    width: 100%;
+    height: 80px;
+
+    flex-shrink: 0;
+}
+
+h2 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home/home";
+import Edit from "./pages/edit/edit";
 import Login from "./pages/login/login";
 import Navigation from "./components/navbar/navbar";
 import Register from "./pages/register/register";
@@ -33,6 +34,7 @@ function App() {
             <Navigation />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/edit" element={<Edit />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/reg" element={<Register />} />
             </Routes>

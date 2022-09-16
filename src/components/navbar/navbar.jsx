@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -38,9 +39,11 @@ function Navigation() {
           </Nav>
           {username ? (
             <>
-              <Nav className="ms-auto">
-                <Navbar.Text style={{ marginRight: '10px' }}>Hello {username}</Navbar.Text>
-                <Nav.Link href="/" onClick={onLogoutClick}>Logout</Nav.Link>
+              <Nav className="ms-auto me-2">
+                <NavDropdown style={{ marginRight: '10px' }} title={`Hello ${username}`}>
+                  <NavDropdown.Item href="/edit">Edit Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="/" onClick={onLogoutClick}>Logout</NavDropdown.Item>
+                </NavDropdown>
               </Nav>
             </>
           ) : (

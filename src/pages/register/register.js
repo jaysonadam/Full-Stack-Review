@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import './register.css';
 import { Button } from 'react-bootstrap';
+
+import { Navigate } from "react-router-dom";
 import axios from "../../config/axios";
 
 function Register() {
@@ -12,6 +14,8 @@ function Register() {
         password: ''
     });
 
+    const [isRegistered, setIsRegistered] = useState(false);
+
     const onRegister = async () => {
         try {
             const res = await axios.post("/users/reg", {
@@ -20,6 +24,7 @@ function Register() {
                 email: register.email,
                 password: register.password
             })
+            setIsRegistered(true);
         } catch (error) {
             console.log({ error })
         }
@@ -32,6 +37,10 @@ function Register() {
     const onRegisterClick = () => {
         onRegister();
     };
+
+    if (isRegistered === true) {
+        return <Navigate to="/login" replace />
+    }
 
     return (
         <>

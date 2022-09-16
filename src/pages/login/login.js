@@ -47,7 +47,7 @@ function Login() {
 
     if (username) {
         return <Navigate to="/" replace />
-    }
+    };
 
     return (
         <>

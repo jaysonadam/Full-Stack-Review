@@ -1,5 +1,6 @@
 import axios from "../../config/axios";
 import { useSelector } from 'react-redux';
+import { Navigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 import { Button } from 'react-bootstrap';
@@ -8,6 +9,7 @@ import './edit.css';
 function Edit() {
     const user_id = useSelector((state) => state.auth.id);
 
+    const [updated, setUpdated] = useState(false);
     const [formState, setFormState] = useState({
         username: '',
         name: '',
@@ -28,11 +30,31 @@ function Edit() {
         } catch (error) {
             console.log({ error })
         }
-    }
+    };
+
+    const putUserProfile = async () => {
+        try {
+            const res = await axios.put(`/users/edit/${user_id}`, {
+                username: formState.username,
+                name: formState.name,
+                email: formState.email,
+                password: formState.password
+            })
+
+            alert("Update was successful")
+            setUpdated(true);
+        } catch (error) {
+            console.log({ error })
+        }
+    };
 
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.name]: e.target.value })
-    }
+    };
+
+    if (updated === true) {
+        return <Navigate to="/" replace />
+    };
 
     return (
         <>
@@ -52,7 +74,7 @@ function Edit() {
                     <h5 id="head">Password</h5>
                     <input placeholder="Password" type="password" name="password" onChange={handleChange} value={formState.password} className="edit" />
 
-                    <Button className="mt-4">Save</Button>
+                    <Button className="mt-4" onClick={putUserProfile}>Save</Button>
                 </div>
             </div>
         </>

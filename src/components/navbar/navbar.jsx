@@ -33,13 +33,13 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/">Products</Nav.Link>
+            <Nav.Link href="/">Products</Nav.Link>/
             <Nav.Link href="/">Contact Us</Nav.Link>
           </Nav>
           {username ? (
             <>
               <Nav className="ms-auto">
-                <Nav.Link>Hello {username}</Nav.Link>
+                <Navbar.Text style={{ marginRight: '10px' }}>Hello {username}</Navbar.Text>
                 <Nav.Link href="/" onClick={onLogoutClick}>Logout</Nav.Link>
               </Nav>
             </>

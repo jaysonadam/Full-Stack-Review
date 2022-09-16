@@ -27,8 +27,7 @@ function Login() {
             });
 
             const user = res.data.user[0]
-            
-            console.log(user)
+
             const action = loginAction(user)
 
             dispatch(action)
@@ -57,7 +56,7 @@ function Login() {
                 <h1>Login</h1>
                 <input placeholder="Username" type="text" name="username" onChange={handleChange} />
                 <input placeholder="Password" type="password" name="password" onChange={handleChange} />
-                <Button onClick={onLoginClick} onKeyPress={onInputPress}>Login</Button>
+                <Button onClick={onLoginClick} onKeyPress={onInputPress} className="login">Login</Button>
             </div>
         </div>
         </>

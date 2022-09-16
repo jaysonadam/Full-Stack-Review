@@ -54,8 +54,8 @@ function Login() {
         <div className="d-flex justify-content-center">
             <div className="d-flex flex-column">
                 <h1>Login</h1>
-                <input placeholder="Username" type="text" name="username" onChange={handleChange} />
-                <input placeholder="Password" type="password" name="password" onChange={handleChange} />
+                <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input"/>
+                <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input"/>
                 <Button onClick={onLoginClick} onKeyPress={onInputPress} className="login">Login</Button>
             </div>
         </div>

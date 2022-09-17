@@ -1,12 +1,14 @@
-import axios from "../../config/axios";
-import { useSelector } from 'react-redux';
-import { Navigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import axios from "../../config/axios";
+import { useSelector, useDispatch } from 'react-redux';
+import { Navigate } from "react-router-dom";
+import { editAction } from "../../store/action/action";
 
 import { Button } from 'react-bootstrap';
 import './edit.css';
 
 function Edit() {
+    const dispatch = useDispatch();
     const user_id = useSelector((state) => state.auth.id);
 
     const [updated, setUpdated] = useState(false);
@@ -26,7 +28,8 @@ function Edit() {
             const res = await axios.get(`/users/${user_id}`)
             const profile = res.data.users[0];
 
-            setFormState(profile)
+            setFormState(profile);
+
         } catch (error) {
             console.log({ error })
         }
@@ -41,8 +44,14 @@ function Edit() {
                 password: formState.password
             })
 
-            alert("Update was successful")
+            alert("Update was successful");
+
+                const edit = { id: user_id, username: formState.username, name: formState.name };
+                const action = editAction(edit);
+                dispatch(action);
+
             setUpdated(true);
+
         } catch (error) {
             console.log({ error })
         }
@@ -79,6 +88,6 @@ function Edit() {
             </div>
         </>
     )
-}
+};
 
 export default Edit;

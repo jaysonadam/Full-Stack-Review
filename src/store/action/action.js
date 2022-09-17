@@ -12,8 +12,17 @@ export const keepLoginAction = ({ id, username }) => {
         type: "LOGIN_SUCCESS",
         payload: { id, username }
     };
-    };
-    
+};
+
+export const editAction = (editData) => {
+    localStorage.setItem("userData", JSON.stringify(editData));
+  
+    return {
+      type: "EDIT_SUCCESS",
+      payload: editData
+    }
+};
+
 export const logoutAction = () => {
     localStorage.removeItem("userData");
     return {

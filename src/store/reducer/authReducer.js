@@ -12,6 +12,13 @@ const authReducer = (state = init, action) => {
                 username: action.payload.username
             };
 
+        case "EDIT_SUCCESS":
+            return {
+                ...state,
+                id: action.payload.user_id,
+                username: action.payload.username
+            }
+
         case "LOGOUT_SUCCESS":
             return init;
 

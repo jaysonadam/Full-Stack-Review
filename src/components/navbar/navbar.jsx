@@ -40,7 +40,7 @@ function Navigation() {
           {username ? (
             <>
               <Nav className="ms-auto me-2">
-                <NavDropdown style={{ marginRight: '10px' }} title={`Hello ${username}`}>
+                <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${username}`}>
                   <NavDropdown.Item href="/edit">Edit Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/" onClick={onLogoutClick}>Logout</NavDropdown.Item>
                 </NavDropdown>

@@ -1,0 +1,9 @@
+#kartu {
+    width: 250px;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-inline: 15px;
+
+    box-shadow: 8px 16px 16px hsl(0deg 0% 0% / 0.25);
+    background-color: rgb(252, 242, 228);
+}

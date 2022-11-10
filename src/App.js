@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home";
 import Edit from "./pages/edit/edit";
 import Login from "./pages/login/login";
+import AddProducts from "./pages/add/add";
 import Register from "./pages/register/register";
 import Products from "./pages/products/products";
 import Navigation from "./components/navbar/navbar";
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/edit" element={<Edit />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/reg" element={<Register />} />
+                <Route path="/add" element={<AddProducts />} />
                 <Route path="/products" element={<Products />} />
             </Routes>
         </Router>

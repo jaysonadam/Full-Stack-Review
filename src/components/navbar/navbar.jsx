@@ -35,7 +35,7 @@ function Navigation() {
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
-            <Nav.Link href="/">Contact Us</Nav.Link>
+            <Nav.Link href="/add">Add Products</Nav.Link>
           </Nav>
           {username ? (
             <>

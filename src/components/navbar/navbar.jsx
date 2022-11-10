@@ -29,7 +29,7 @@ function Navigation() {
   return (
     <Navbar bg="dark" variant="dark" expand="sm">
       <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">MY SHOP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
           <Nav>

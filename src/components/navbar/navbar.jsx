@@ -34,7 +34,7 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/">Products</Nav.Link>
+            <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href="/">Contact Us</Nav.Link>
           </Nav>
           {username ? (

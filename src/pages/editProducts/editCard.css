@@ -1,0 +1,7 @@
+#c4rd {
+    transition: all 200ms ease;
+}
+
+#c4rd:hover {
+    background-color: antiquewhite;
+}

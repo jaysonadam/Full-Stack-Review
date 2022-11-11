@@ -3,12 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home/home";
-import Edit from "./pages/edit/edit";
+import Edit from "./pages/editProfile/edit";
 import Login from "./pages/login/login";
 import AddProducts from "./pages/add/add";
 import Register from "./pages/register/register";
 import Products from "./pages/products/products";
 import Navigation from "./components/navbar/navbar";
+import EditProducts from "./pages/editProducts/editProducts";
 
 import { useDispatch } from "react-redux";
 import { keepLoginAction } from "./store/action/action";
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/reg" element={<Register />} />
                 <Route path="/add" element={<AddProducts />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/edit-products" element={<EditProducts />} />
             </Routes>
         </Router>
         </>

@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import axios from "../../config/axios";
 
-import './products.css';
-import ProductCard from "./components/card";
+import EditCard from './editCard';
 
-function Products() {
+function EditProducts() {
     const [ products, setProducts ] = useState([]);
-
-    console.log(products)
-
-    useEffect(() => {
-        fetchProducts();
-    }, [])
-
+    
     const fetchProducts = async () => {
         try {
             const res = await axios.get("/products/all");
@@ -24,25 +17,27 @@ function Products() {
           }
     };
 
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     return (
         <>
             <div>
-                <h1>Products</h1>
+                <h1>Edit Products</h1>
             </div>
-            <div id="pro">
-                <div class="d-flex flex-wrap col-9 my-5 justify-content-center">
+            <div>
                 {products.map((product) => {
                     return (
-                        <ProductCard
+                        <EditCard 
                             key={product.product_id}
                             details={product}
                         />
                     )
                 })}
-                </div>
             </div>
         </>
     )
 }
 
-export default Products;
+export default EditProducts;

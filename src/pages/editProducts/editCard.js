@@ -59,12 +59,12 @@ function EditCard(props) {
         <>
             <Card className="mt-4" id="c4rd">
                 <Card.Body className="d-flex justify-content-around">
-                    <h5>ID: {product_id}</h5>
+                    <h5 style={{ paddingTop: '8px' }}>ID: {product_id}</h5>
                     <input value={edit_product_name} onChange={handleChange} name="edit_product_name"></input>
                     <input value={edit_price} onChange={handleChange} name="edit_price" type="number"></input>
                     <input value={edit_description} onChange={handleChange} name="edit_description"></input>
                     <input value={edit_stock} onChange={handleChange} name="edit_stock" type="number"></input>
-                    <h6>Category: {category_name}</h6>
+                    <h6 style={{ paddingTop: '8px' }}>Category: {category_name}</h6>
                     <select onChange={handleChange} name="edit_category_id">
                         {categories.map((category) => {
                             return (

@@ -1,5 +1,6 @@
 const init = {
     id: 0,
+    role: '',
     username: ""
 };
 
@@ -9,6 +10,7 @@ const authReducer = (state = init, action) => {
             return {
                 ...state,
                 id: action.payload.id,
+                role: action.payload.id,
                 username: action.payload.username
             };
 

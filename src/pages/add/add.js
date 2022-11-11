@@ -67,7 +67,8 @@ function AddProducts() {
                     <h5 id="ipt">Stock</h5>
                     <input name="stock" type="number" min={1} max={100} value={ formState.stock } onChange={handleChange}/>
 
-                    <select name="category_id" onChange={handleChange} id="ipt">
+                    <h5 id="ipt">Select Product Category</h5>
+                    <select name="category_id" onChange={handleChange}>
                         {categories.map((category) => 
                             <option key={category.category_id} value={category.category_id}>
                                 {category.category_name}

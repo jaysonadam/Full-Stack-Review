@@ -33,10 +33,10 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
           <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/products">Products</Nav.Link>
-            <Nav.Link href="/add">Add Products</Nav.Link>
-            <Nav.Link href="/edit-products">Edit Products</Nav.Link>
+            <Nav.Link style={{ marginInline: '10px' }} href="/">Home</Nav.Link>
+            <Nav.Link style={{ marginInline: '10px' }} href="/products">Products</Nav.Link>
+            <Nav.Link style={{ marginInline: '10px' }} href="/add">Add Products</Nav.Link>
+            <Nav.Link style={{ marginInline: '10px' }} href="/edit-products">Edit Products</Nav.Link>
           </Nav>
           {username ? (
             <>

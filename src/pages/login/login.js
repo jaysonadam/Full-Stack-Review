@@ -8,7 +8,7 @@ import './login.css';
 import { Button } from 'react-bootstrap';
 
 function Login() {
-    const { username } = useSelector((state) => state.auth.username);
+    const { username } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({
         username: "",
@@ -46,7 +46,7 @@ function Login() {
     };
 
     if (username) {
-        return <Navigate to="/" replace />
+        return <Navigate to="/" replace />;
     };
 
     return (

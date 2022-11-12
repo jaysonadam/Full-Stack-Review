@@ -47,10 +47,10 @@ function Register() {
         <div className="d-flex justify-content-center">
             <div className="d-flex flex-column">
                 <h1>Regsiter</h1>
-                <input placeholder="Create a Username" type="text" name="username" className="input" onChange={handleChange}/>
-                <input placeholder="Full Name" type="text" name="name" className="input" onChange={handleChange}/>
-                <input placeholder="Enter your email" type="text" name="email" className="input" onChange={handleChange}/>
-                <input placeholder="Create a Password" type="password" name="password" className="input" onChange={handleChange}/>
+                <input placeholder="Create a Username" type="text" name="username" className="input" onChange={handleChange} className="create"></input>
+                <input placeholder="Full Name" type="text" name="name" className="input" onChange={handleChange} className="create"></input>
+                <input placeholder="Enter your email" type="text" name="email" className="input" onChange={handleChange} className="create"></input>
+                <input placeholder="Create a Password" type="password" name="password" className="input" onChange={handleChange} className="create"></input>
                 <Button className="create" onClick={onRegisterClick}>Create Account</Button>
             </div>
         </div>

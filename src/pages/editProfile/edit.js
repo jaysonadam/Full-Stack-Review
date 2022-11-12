@@ -16,6 +16,7 @@ function Edit() {
         username: '',
         name: '',
         email: '',
+        role: '',
         password: ''
     });
 
@@ -46,7 +47,7 @@ function Edit() {
 
             alert("Update was successful");
 
-                const edit = { id: user_id, username: formState.username, name: formState.name };
+                const edit = { id: user_id, username: formState.username, role: formState.role };
                 const action = editAction(edit);
                 dispatch(action);
 

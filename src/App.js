@@ -23,8 +23,8 @@ function App() {
 
         if (usersLocalStorage) {
         const userData = JSON.parse(usersLocalStorage);
-        const { id, username } = userData;
-        dispatch(keepLoginAction({ id, username }));
+        const { id, username, role } = userData;
+        dispatch(keepLoginAction({ id, username, role }));
         }
 
         setIsStorageChecked(true);

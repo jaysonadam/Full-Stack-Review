@@ -8,21 +8,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../store/action/action";
-import { Navigate } from "react-router-dom";
 
 function Navigation() {
   const dispatch = useDispatch();
   const { username, role } = useSelector((state) => state.auth);
-  const [logout, setLogout] = useState(false);
 
   const onLogoutClick = () => {
     dispatch(logoutAction())
-    setLogout(true);
   };
-
-  if (logout === true) {
-    return <Navigate to="/" replace />
-  } 
 
   if (username && role) {
   if (role === 'customer') {

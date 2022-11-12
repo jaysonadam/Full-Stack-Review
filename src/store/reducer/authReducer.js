@@ -17,7 +17,8 @@ const authReducer = (state = init, action) => {
         case "EDIT_SUCCESS":
             return {
                 ...state,
-                id: action.payload.user_id,
+                id: action.payload.id,
+                role: action.payload.role,
                 username: action.payload.username
             }
 

@@ -69,8 +69,9 @@ function Navigation() {
           <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
             <Navbar.Brand href="/">SCHOOL</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
+            <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark">
               <Nav>
+                <Nav.Link style={{ marginInline: '10px' }} href="/about">About</Nav.Link>
                 <NavDropdown title="Login">
                   <NavDropdown.Item href="/loginTeacher">As a Teacher</NavDropdown.Item>
                   <NavDropdown.Item href="/loginStudent">As a Student</NavDropdown.Item>

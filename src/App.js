@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import Home from "./pages/homeProducts/home";
-import Edit from "./pages/editProfile/edit";
+import Email from "./pages/email/email";
+import About from "./pages/about/about";
 import AddProducts from "./pages/add/add";
+import Edit from "./pages/editProfile/edit";
 import Register from "./pages/register/register";
 import Products from "./pages/products/products";
 import Navigation from "./components/navbar/navbar";
@@ -42,6 +44,8 @@ function App() {
                 {/* <Route path="/" element={<Home />} /> */}
                 <Route path="/" element={<HomeSchool />} />
                 <Route path="/edit" element={<Edit />} />
+                <Route path="/email" element={<Email />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/reg" element={<Register />} />
                 <Route path="/add" element={<AddProducts />} />
                 <Route path="/products" element={<Products />} />

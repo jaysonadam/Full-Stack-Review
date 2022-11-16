@@ -7,10 +7,10 @@ export const loginAction = (loginData) => {
     }
 };
 
-export const keepLoginAction = ({ id, username, role }) => {
+export const keepLoginAction = ({ id, username, role, fullname }) => {
     return {
         type: "LOGIN_SUCCESS",
-        payload: { id, username, role }
+        payload: { id, username, role, fullname }
     };
 };
 

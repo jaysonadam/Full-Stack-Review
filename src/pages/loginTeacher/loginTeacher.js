@@ -8,7 +8,7 @@ import './loginT.css';
 import { Button } from 'react-bootstrap';
 
 function LoginTeacher() {
-    const { username } = useSelector((state) => state.auth);
+    const { username } = useSelector((state) => state.teacher);
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({
         username: "",
@@ -53,7 +53,7 @@ function LoginTeacher() {
         <>
         <div className="d-flex justify-content-center">
             <div className="d-flex flex-column">
-                <h1>Login</h1>
+                <h1>Teacher Login</h1>
                 <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input"/>
                 <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input"/>
                 <Button onClick={onLoginClick} onKeyPress={onInputPress} className="login">Login</Button>

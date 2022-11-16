@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,7 +11,7 @@ import { logoutAction } from "../../store/action/action";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const { username, role } = useSelector((state) => state.auth);
+  const { username, role, fullname } = useSelector((state) => state.student || state.teacher);
 
   const onLogoutClick = () => {
     dispatch(logoutAction())
@@ -31,7 +31,7 @@ function Navigation() {
                 <Nav.Link style={{ marginInline: '10px' }} href="/products">Products</Nav.Link>
               </Nav>
               <Nav className="ms-auto me-2">
-                <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${username}`}>
+                <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${fullname}`}>
                   <NavDropdown.Item href="/edit">Edit Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/" onClick={onLogoutClick}>Logout</NavDropdown.Item>
                 </NavDropdown>
@@ -56,7 +56,7 @@ function Navigation() {
                 <Nav.Link style={{ marginInline: '10px' }} href="/edit-products">Edit Products</Nav.Link>
               </Nav>
               <Nav className="ms-auto me-2">
-                <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${username}`}>
+                <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${fullname}`}>
                   <NavDropdown.Item href="/edit">Edit Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/" onClick={onLogoutClick}>Logout</NavDropdown.Item>
                 </NavDropdown>
@@ -75,14 +75,11 @@ function Navigation() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
               <Nav>
-                <Nav.Link style={{ marginInline: '10px' }} href="/">Home</Nav.Link>
-              </Nav>
-              <>
-                <NavDropdown style={{ marginRight: '30px' }} title="Login">
-                  <NavDropdown.Item href="/loginTeacher">As Teacher</NavDropdown.Item>
-                  <NavDropdown.Item href="/loginStudent">As Student</NavDropdown.Item>
+                <NavDropdown title="Login">
+                  <NavDropdown.Item href="/loginTeacher">As a Teacher</NavDropdown.Item>
+                  <NavDropdown.Item href="/loginStudent">As a Student</NavDropdown.Item>
                 </NavDropdown>
-              </>
+              </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>

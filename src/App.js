@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/home/home";
+// import Home from "./pages/homeProducts/home";
 import Edit from "./pages/editProfile/edit";
 import AddProducts from "./pages/add/add";
 import Register from "./pages/register/register";
 import Products from "./pages/products/products";
 import Navigation from "./components/navbar/navbar";
 import Attendance from "./pages/attendance/attendance";
+import HomeSchool from "./pages/homeSchool/homeSchool";
 import LoginTeacher from "./pages/loginTeacher/loginTeacher";
 import LoginStudent from "./pages/loginStudent/loginStudent";
 import EditProducts from "./pages/editProducts/editProducts";
@@ -38,7 +39,8 @@ function App() {
         <Router>
             <Navigation />
             <Routes>
-                <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<Home />} /> */}
+                <Route path="/" element={<HomeSchool />} />
                 <Route path="/edit" element={<Edit />} />
                 <Route path="/reg" element={<Register />} />
                 <Route path="/add" element={<AddProducts />} />

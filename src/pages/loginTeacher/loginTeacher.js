@@ -4,10 +4,10 @@ import { Navigate } from "react-router-dom";
 import axios from "../../config/axios";
 import { loginAction } from "../../store/action/action";
 
-import './login.css';
+import './loginT.css';
 import { Button } from 'react-bootstrap';
 
-function Login() {
+function LoginTeacher() {
     const { username } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({
@@ -63,4 +63,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default LoginTeacher;

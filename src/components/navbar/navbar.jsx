@@ -18,12 +18,12 @@ function Navigation() {
   };
 
   if (username && role) {
-  if (role === 'customer') {
+  if (role === 'student') {
     return (
       <>
         <Navbar bg="dark" variant="dark" expand="sm">
           <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
-            <Navbar.Brand href="/">MY SHOP</Navbar.Brand>
+            <Navbar.Brand href="/">SCHOOL</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
               <Nav>
@@ -41,12 +41,12 @@ function Navigation() {
         </Navbar>
       </>
     );
-  } else if (role === 'admin') {
+  } else if (role === 'teacher') {
     return (
       <>
         <Navbar bg="dark" variant="dark" expand="sm">
           <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
-            <Navbar.Brand href="/">MY SHOP</Navbar.Brand>
+            <Navbar.Brand href="/">SCHOOL</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
               <Nav>
@@ -71,17 +71,17 @@ function Navigation() {
       <>
         <Navbar bg="dark" variant="dark" expand="sm">
           <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
-            <Navbar.Brand href="/">MY SHOP</Navbar.Brand>
+            <Navbar.Brand href="/">SCHOOL</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
               <Nav>
                 <Nav.Link style={{ marginInline: '10px' }} href="/">Home</Nav.Link>
               </Nav>
               <>
-                <Nav className="ms-auto">
-                  <Nav.Link href="/login">Login</Nav.Link>
-                  <Nav.Link href="/reg">Register</Nav.Link>
-                </Nav>
+                <NavDropdown style={{ marginRight: '30px' }} title="Login">
+                  <NavDropdown.Item href="/loginTeacher">As Teacher</NavDropdown.Item>
+                  <NavDropdown.Item href="/loginStudent">As Student</NavDropdown.Item>
+                </NavDropdown>
               </>
             </Navbar.Collapse>
           </Container>

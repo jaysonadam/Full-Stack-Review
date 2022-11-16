@@ -5,8 +5,8 @@ h1 {
     justify-content: center;
 }
 
-.login-input {
-    width: 200px;
+.login-input-t {
+    width: 100%;
     margin-top: 25px;
     padding: 5px;
 }

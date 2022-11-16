@@ -21,7 +21,7 @@ function LoginTeacher() {
 
     const onLogin = async () => {
         try {
-            const res = await axios.post("/users/login", {
+            const res = await axios.post("/teachers/login", {
                 username: formState.username,
                 password: formState.password
             });
@@ -54,8 +54,8 @@ function LoginTeacher() {
         <div className="d-flex justify-content-center">
             <div className="d-flex flex-column">
                 <h1>Teacher Login</h1>
-                <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input"/>
-                <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input"/>
+                    <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input-t"/>
+                    <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input-t"/>
                 <Button onClick={onLoginClick} onKeyPress={onInputPress} className="login">Login</Button>
             </div>
         </div>

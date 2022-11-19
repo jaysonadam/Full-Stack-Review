@@ -2,7 +2,7 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
-import "./homeSchool.css";
+import "./homeStudent.css";
 import { Card, Button } from 'react-bootstrap';
 
 const menu = [
@@ -14,7 +14,7 @@ const menu = [
     { title: 'Check our events', dir: '/events' }
 ]
 
-function HomeSchool() {
+function HomeStudent() {
     const { fullname } = useSelector((state) => state.student);
 
     return (
@@ -40,4 +40,4 @@ function HomeSchool() {
     )
 };
 
-export default HomeSchool;
+export default HomeStudent;

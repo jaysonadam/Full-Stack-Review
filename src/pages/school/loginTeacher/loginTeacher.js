@@ -46,7 +46,7 @@ function LoginTeacher() {
     };
 
     if (username) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/home-teacher" replace />;
     };
 
     return (

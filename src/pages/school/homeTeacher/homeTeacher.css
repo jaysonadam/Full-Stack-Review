@@ -1,0 +1,19 @@
+.menu-home-t {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.menu-cards-t {
+    width: 250px;
+    height: 200px;
+
+    margin: 20px;
+
+    transition: all 200ms ease;
+}
+
+.menu-cards-t:hover {
+    background-color: #85b6ff;
+}

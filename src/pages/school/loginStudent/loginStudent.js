@@ -46,7 +46,7 @@ function LoginStudent() {
     };
 
     if (username) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/home-student" replace />;
     };
 
     return (

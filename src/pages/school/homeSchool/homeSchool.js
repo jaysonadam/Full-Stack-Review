@@ -7,7 +7,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const menu = [
     { title: 'Submit your homework', dir: '/homework' },
-    { title: 'Check your exam results', dir: '/exam' },
+    { title: 'Check your exam results', dir: '/exams' },
     { title: 'Check your attendance', dir: '/attendance' },
     { title: 'Send an email', dir: '/email' },
     { title: 'About School', dir: '/about' },

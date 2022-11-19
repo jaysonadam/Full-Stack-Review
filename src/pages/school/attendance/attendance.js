@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../config/axios";
+import axios from "../../../config/axios";
 
 function Attendance() {
     return (

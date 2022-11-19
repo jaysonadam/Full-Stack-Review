@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../config/axios";
+import axios from "../../../config/axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from "react-router-dom";
-import { editAction } from "../../store/action/action";
+import { editAction } from "../../../store/action/action";
 
 import { Button } from 'react-bootstrap';
 import './edit.css';

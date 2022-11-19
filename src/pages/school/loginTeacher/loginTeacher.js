@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import axios from "../../config/axios";
-import { loginAction } from "../../store/action/action";
+import axios from "../../../config/axios";
+import { loginAction } from "../../../store/action/action";
 
 import './loginT.css';
 import { Button } from 'react-bootstrap';

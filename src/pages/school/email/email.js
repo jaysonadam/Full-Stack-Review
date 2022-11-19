@@ -3,7 +3,7 @@ import React from "react";
 function Email() {
     return (
         <>
-            <h2>Email</h2>
+            <h1>Email</h1>
         </>
     )
 };

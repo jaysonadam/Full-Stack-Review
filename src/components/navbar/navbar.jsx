@@ -17,7 +17,7 @@ function Navigation() {
   if (role === 'student') {
     return (
       <>
-        <Navbar bg="dark" variant="dark" expand="sm">
+        <Navbar bg="success" variant="dark" expand="sm">
           <Container style={{ marginInline: '10px', maxWidth: '100%' }}>
             <Navbar.Brand href="/">SCHOOL</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -54,7 +54,7 @@ function Navigation() {
               <Nav className="ms-auto me-2">
                 <NavDropdown style={{ marginRight: '30px' }} title={`Hello ${fullname}`}>
                   <NavDropdown.Item href="/edit">Edit Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="/" onClick={onLogoutClick}>Logout</NavDropdown.Item>
+                  <NavDropdown.Item href="/login" onClick={onLogoutClick}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>

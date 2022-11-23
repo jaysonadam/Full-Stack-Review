@@ -7,9 +7,12 @@ import Email from "./pages/school/email/email";
 import About from "./pages/school/about/about";
 // import AddProducts from "./pages/emmerce/add/add";
 import Exams from "./pages/school/exam/exam";
+import Login from "./pages/school/login/login";
 import Events from "./pages/school/event/event";
 import Homework from "./pages/school/homework/hw";
 import Edit from "./pages/school/editProfile/edit";
+import Profile from "./pages/school/profile/profile";
+import Subjects from "./pages/school/subjects/subjects";
 // import Register from "./pages/emmerce/register/register";
 // import Products from "./pages/emmerce/products/products";
 import Navigation from "./components/navbar/navbar";
@@ -17,8 +20,6 @@ import SchoolHome from "./pages/school/schoolHome/schoolHome";
 import Attendance from "./pages/school/attendance/attendance";
 import HomeStudent from "./pages/school/homeStudent/homeStudent";
 import HomeTeacher from "./pages/school/homeTeacher/homeTeacher";
-import LoginTeacher from "./pages/school/loginTeacher/loginTeacher";
-import LoginStudent from "./pages/school/loginStudent/loginStudent";
 // import EditProducts from "./pages/emmerce/editProducts/editProducts";
 
 import { useDispatch } from "react-redux";
@@ -33,8 +34,8 @@ function App() {
 
         if (usersLocalStorage) {
         const userData = JSON.parse(usersLocalStorage);
-        const { id, username, role, fullname } = userData;
-        dispatch(keepLoginAction({ id, username, role, fullname }));
+        const { user_id, username, role, fullname } = userData;
+        dispatch(keepLoginAction({ user_id, username, role, fullname }));
         }
 
         setIsStorageChecked(true);
@@ -52,7 +53,10 @@ function App() {
                 <Route path="/exams" element={<Exams />} />
                 <Route path="/email" element={<Email />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/events" element={<Events />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/subjects" element={<Subjects />} />
                 {/* <Route path="/reg" element={<Register />} /> */}
                 {/* <Route path="/add" element={<AddProducts />} /> */}
                 {/* <Route path="/products" element={<Products />} /> */}
@@ -60,8 +64,6 @@ function App() {
                 <Route path="/attendance" element={<Attendance />} />
                 <Route path="/home-student" element={<HomeStudent />} />
                 <Route path="/home-teacher" element={<HomeTeacher />} />
-                <Route path="/login-teacher" element={<LoginTeacher />} />
-                <Route path="/login-student" element={<LoginStudent />} />
                 {/* <Route path="/edit-products" element={<EditProducts />} /> */}
             </Routes>
         </Router>

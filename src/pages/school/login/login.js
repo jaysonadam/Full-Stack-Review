@@ -4,11 +4,11 @@ import { Navigate } from "react-router-dom";
 import axios from "../../../config/axios";
 import { loginAction } from "../../../store/action/action";
 
-import './loginS.css';
+import './login.css';
 import { Button } from 'react-bootstrap';
 
 function LoginStudent() {
-    const { username } = useSelector((state) => state.student || state.teacher);
+    const { user_id, username, role } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({
         username: "",
@@ -21,7 +21,7 @@ function LoginStudent() {
 
     const onLogin = async () => {
         try {
-            const res = await axios.post("/students/login", {
+            const res = await axios.post("/users/login", {
                 username: formState.username,
                 password: formState.password
             });
@@ -45,15 +45,17 @@ function LoginStudent() {
         if (e.code === "Enter") onLogin();
     };
 
-    if (username) {
+    if (username && role === "student") {
         return <Navigate to="/home-student" replace />;
+    } else if (username && role === "teacher") {
+        return <Navigate to="/home-teacher" replace />;
     };
 
     return (
         <>
         <div className="d-flex justify-content-center">
             <div className="d-flex flex-column">
-                <h1>Student Login</h1>
+                <h1>Account Login</h1>
                     <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input"/>
                     <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input"/>
                 <Button onClick={onLoginClick} onKeyPress={onInputPress} className="login">Login</Button>

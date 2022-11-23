@@ -15,7 +15,7 @@ const menu = [
 ]
 
 function HomeStudent() {
-    const { fullname } = useSelector((state) => state.student);
+    const { user_id, username, fullname } = useSelector((state) => state.auth);
 
     return (
         <>

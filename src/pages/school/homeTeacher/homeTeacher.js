@@ -6,15 +6,16 @@ import "./homeTeacher.css";
 import { Card, Button } from 'react-bootstrap';
 
 const menu = [
-    { title: 'Check homework', dir: '/homework' },
-    { title: 'Check exams', dir: '/exams' },
-    { title: 'Check attendances', dir: '/attendance' },
-    { title: 'Check emails', dir: '/email' },
-    { title: 'Create events', dir: '/events' }
+    { title: 'Homework', dir: '/homework' },
+    { title: 'Attendances', dir: '/attendance' },
+    { title: 'Exams', dir: '/exams' },
+    { title: 'Emails', dir: 'https://www.gmail.com' },
+    { title: 'Events', dir: '/events' },
+    { title: 'Subjects', dir: '/subjects' }
 ]
 
 function HomeTeacher() {
-    const { fullname } = useSelector((state) => state.teacher);
+    const { fullname } = useSelector((state) => state.auth);
 
     return (
         <>

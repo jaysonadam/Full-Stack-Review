@@ -7,7 +7,7 @@ import { logoutAction } from "../../store/action/action";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const { user_id, username, role, fullname } = useSelector((state) => state.auth);
+  const { username, role, fullname } = useSelector((state) => state.auth);
 
   const onLogoutClick = () => {
     dispatch(logoutAction())

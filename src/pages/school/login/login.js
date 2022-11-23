@@ -8,7 +8,7 @@ import './login.css';
 import { Button } from 'react-bootstrap';
 
 function LoginStudent() {
-    const { user_id, username, role } = useSelector((state) => state.auth);
+    const { username, role } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({
         username: "",
@@ -27,9 +27,9 @@ function LoginStudent() {
             });
 
             const user = res.data.user[0]
-
+            
             const action = loginAction(user)
-
+            
             dispatch(action)
             
         } catch (error) {

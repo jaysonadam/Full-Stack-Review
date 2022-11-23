@@ -1,0 +1,23 @@
+.menu-exam {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.exam-cards {
+    width: 450px;
+    height: 250px;
+
+    margin: 40px;
+    padding: 20px;
+}
+
+.choose {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 75px;
+}

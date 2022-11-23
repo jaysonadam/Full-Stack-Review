@@ -3,7 +3,7 @@ const init = {
     role: '',
     username: '',
     fullname: '',
-    class: ''
+    stream_id: ''
 };
 
 const authReducer = (state = init, action) => {
@@ -15,7 +15,7 @@ const authReducer = (state = init, action) => {
                 role: action.payload.role,
                 username: action.payload.username,
                 fullname: action.payload.fullname,
-                class: action.payload.class
+                stream_id: action.payload.stream_id
             };
 
         case "LOGOUT_SUCCESS":

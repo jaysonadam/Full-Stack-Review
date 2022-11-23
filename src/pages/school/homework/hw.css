@@ -1,0 +1,14 @@
+.hw-menu {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.hw-card {
+    width: 80%;
+    height: 200px;
+
+    margin: 20px;
+    padding: 15px;
+}

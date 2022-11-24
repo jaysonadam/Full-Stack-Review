@@ -16,7 +16,7 @@ function Exams() {
     useEffect(() => {
         fetchSubjects();
         if (role === "student") {
-            fetchResultsById();
+            fetchResultsByStudentId();
         } else if (role === "teacher") {
             fetchAllResults();
         }
@@ -37,7 +37,7 @@ function Exams() {
         }
     };
 
-    const fetchResultsById = async () => {
+    const fetchResultsByStudentId = async () => {
         try {
             const res = await axios.get(`/grades/${id}`);
             const { data } = res
@@ -83,7 +83,7 @@ function Exams() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant="dark">
-                        <Dropdown.Item onClick={() => fetchResultsById()}>All</Dropdown.Item>
+                        <Dropdown.Item onClick={() => fetchResultsByStudentId()}>All</Dropdown.Item>
                         {subjects.map((subject) => {
                             return (
                                 <Dropdown.Item value={subject.subject_id} onClick={() => setFilter(subject.subject_id)} name={subject.subject_id}>

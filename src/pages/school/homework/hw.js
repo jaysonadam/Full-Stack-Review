@@ -4,7 +4,7 @@ import axios from "../../../config/axios";
 
 import './hw.css';
 import moment from "moment";
-import { Card, Button, Offcanvas } from "react-bootstrap";
+import { Card, Button, Offcanvas, Dropdown } from "react-bootstrap";
 
 function OffCanvas({info}) {
     const [show, setShow] = useState(false);
@@ -39,25 +39,19 @@ function OffCanvas({info}) {
 }
 
 function Homework() {
-    const { id, fullname, role, stream_id } = useSelector((state) => state.auth);
+    const { stream_id } = useSelector((state) => state.auth);
     const [ homework, setHomework ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
     const [ filter, setFilter ] = useState([]);
-    console.log(homework)
 
     useEffect(() => {
         fetchSubjects();
-        // if (role === "student") {
-        //     fetchHomeworkById();
-        // } else if (role === "teacher") {
-        //     fetchAllHomework();
-        // }
         fetchAllHomework();
     }, [])
 
-    // useEffect(() => {
-    //     fetchFilteredHomework();
-    // }, [filter])
+    useEffect(() => {
+        fetchFilteredHomework();
+    }, [filter])
 
     const fetchSubjects = async () => {
         try {
@@ -81,13 +75,40 @@ function Homework() {
         }
     };
 
+    const fetchFilteredHomework = async () => {
+        try {
+            const res = await axios.get(`/homework/${stream_id}/${filter}`);
+            const { data } = res
+
+            setHomework(data.hw)
+        } catch (error) {
+            console.log(alert(error.message));
+        }
+    };
+
     return (
         <>
             <h1>Homework</h1>
                 <div className="hw-menu">
                     <div class="d-flex flex-wrap col-9 my-5 justify-content-center">
+                        <Dropdown className="pilih">
+                            <Dropdown.Toggle id="dropdown-button-dark-example1" variant="success">
+                                Filter by subject
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu variant="dark">
+                                <Dropdown.Item onClick={() => fetchAllHomework()}>All</Dropdown.Item>
+                                {subjects.map((subject) => {
+                                    return (
+                                        <Dropdown.Item value={subject.subject_id} onClick={() => setFilter(subject.subject_id)} name={subject.subject_id}>
+                                            {subject.subject_name}
+                                        </Dropdown.Item>
+                                    )
+                                })}                      
+                            </Dropdown.Menu>
+                        </Dropdown>
+
                         {homework.map((hw, index) => {
-                            console.log(hw)
                             return (
                                 <Card key={index} className="hw-card">
                                     <h4>{hw.homework_name}</h4>

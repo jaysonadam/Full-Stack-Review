@@ -17,3 +17,15 @@
 .menu-cards:hover {
     background-color: #6dcb9f;
 }
+
+@media (max-width: 1000px) {
+    .hs {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hs {
+        margin: 20px;
+    }
+}

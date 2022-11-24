@@ -53,8 +53,8 @@ function LoginStudent() {
 
     return (
         <>
-        <div className="d-flex justify-content-center">
-            <div className="d-flex flex-column">
+        <div className="d-flex justify-content-center my-5">
+            <div className="d-flex flex-column mt-5">
                 <h1>Account Login</h1>
                     <input placeholder="Username" type="text" name="username" onChange={handleChange} className="login-input"/>
                     <input placeholder="Password" type="password" name="password" onChange={handleChange} className="login-input"/>

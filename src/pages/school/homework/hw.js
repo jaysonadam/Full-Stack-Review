@@ -92,7 +92,7 @@ function Homework() {
                 <div className="hw-menu">
                     <div class="d-flex flex-wrap col-9 my-5 justify-content-center">
                         <Dropdown className="pilih">
-                            <Dropdown.Toggle id="dropdown-button-dark-example1" variant="success">
+                            <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
                                 Filter by subject
                             </Dropdown.Toggle>
 
@@ -112,6 +112,8 @@ function Homework() {
                             return (
                                 <Card key={index} className="hw-card">
                                     <h4>{hw.homework_name}</h4>
+                                    <br></br>
+                                    <h6>Due date : {moment(hw.due_date).utc().format('YYYY-MM-DD')}</h6>
                                     <OffCanvas 
                                         key={index}
                                         info={hw}

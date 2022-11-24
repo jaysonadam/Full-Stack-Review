@@ -19,7 +19,7 @@ function HomeStudent() {
 
     return (
         <>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center hs">
                 <div className="d-flex flex-column">
                     <h1>Welcome to the School Portal, {fullname}</h1>
                     <div className="menu-home">

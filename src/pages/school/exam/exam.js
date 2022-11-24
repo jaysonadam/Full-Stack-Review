@@ -12,6 +12,10 @@ function Exams() {
     const [ results, setResults ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
     const [ filter, setFilter ] = useState([]);
+    console.log(results)
+    console.log(subjects)
+    console.log(stream_id)
+    console.log(role)
 
     useEffect(() => {
         fetchSubjects();

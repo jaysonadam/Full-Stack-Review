@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Email from "./pages/school/email/email";
 import About from "./pages/school/about/about";
 // import AddProducts from "./pages/emmerce/add/add";
-import Exams from "./pages/school/exam/exam";
 import Login from "./pages/school/login/login";
 import Events from "./pages/school/event/event";
 import Homework from "./pages/school/homework/hw";
 import Edit from "./pages/school/editProfile/edit";
+import Exams from "./pages/school/examStudent/examS";
+import ExamsT from "./pages/school/examTeacher/examT";
 import Profile from "./pages/school/profile/profile";
 import Subjects from "./pages/school/subjects/subjects";
 // import Register from "./pages/emmerce/register/register";
@@ -57,6 +58,7 @@ function App() {
                 <Route path="/events" element={<Events />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/subjects" element={<Subjects />} />
+                <Route path="/exam-teacher" element={<ExamsT />} />
                 {/* <Route path="/reg" element={<Register />} /> */}
                 {/* <Route path="/add" element={<AddProducts />} /> */}
                 {/* <Route path="/products" element={<Products />} /> */}

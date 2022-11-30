@@ -8,7 +8,7 @@ import { Card, Button } from 'react-bootstrap';
 const menu = [
     { title: 'Homework', dir: '/homework' },
     { title: 'Attendances', dir: '/attendance' },
-    { title: 'Exams', dir: '/exams' },
+    { title: 'Exams', dir: '/exam-teacher' },
     { title: 'Emails', dir: 'https://www.gmail.com' },
     { title: 'Events', dir: '/events' },
     { title: 'Subjects', dir: '/subjects' }

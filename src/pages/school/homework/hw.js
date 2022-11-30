@@ -28,7 +28,7 @@ function OffCanvas({info}) {
                         Submit through email.
                     <br></br>
                     <br></br>
-                        Due date : {moment(info.due_date).utc().format('YYYY-MM-DD')}
+                        Due date : {moment(info.due_date).utc(true).format('YYYY-MM-DD')}
                     <br></br>
                     <br></br>
                         <Button href="https://www.gmail.com">Submit</Button>
@@ -40,9 +40,10 @@ function OffCanvas({info}) {
 
 function Homework() {
     const { stream_id } = useSelector((state) => state.auth);
+
+    const [ filter, setFilter ] = useState([]);
     const [ homework, setHomework ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
-    const [ filter, setFilter ] = useState([]);
 
     useEffect(() => {
         fetchSubjects();
@@ -91,7 +92,7 @@ function Homework() {
             <h1>Homework</h1>
                 <div className="hw-menu">
                     <div class="d-flex flex-wrap col-9 my-5 justify-content-center">
-                        <Dropdown className="pilih">
+                        <Dropdown className="choose">
                             <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
                                 Filter by subject
                             </Dropdown.Toggle>
@@ -113,7 +114,7 @@ function Homework() {
                                 <Card key={index} className="hw-card">
                                     <h4>{hw.homework_name}</h4>
                                     <br></br>
-                                    <h6>Due date : {moment(hw.due_date).utc().format('YYYY-MM-DD')}</h6>
+                                    <h6>Due date : {moment(hw.due_date).utc(true).format('YYYY-MM-DD')}</h6>
                                     <OffCanvas 
                                         key={index}
                                         info={hw}

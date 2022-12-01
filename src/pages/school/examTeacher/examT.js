@@ -66,7 +66,7 @@ function ExamsT() {
 
     };
 
-    const fetchGrades = async () => {
+    const fetchAllGrades = async () => {
 
         try {
             const res = await axios.get(`/grades/${stream_id}`)
@@ -80,11 +80,12 @@ function ExamsT() {
 
     };
 
-    const fetchSearchGrades = async () => {
+    const fetchGrades = async () => {
 
         try {
             const res = await axios.get('/grades/', {
                 params: {
+                    stream_id: stream_id,
                     exam_id: filter.exam_id,
                     user_id: filter.user_id,
                     subject_id: filter.subject_id
@@ -106,7 +107,7 @@ function ExamsT() {
 
     const defaultClick = () => {
         setFilter({ exam_id: '', user_id: '', subject_id: '' })
-        fetchGrades();
+        fetchAllGrades();
     };
     
         return (
@@ -127,7 +128,7 @@ function ExamsT() {
                         {/* Subject */}
                         <select className="form-control d-flex justify-content-center pilih-t" name="subject_id" onChange={handleChange}>
                             <optgroup label="Filter by subjects">
-                                <option onClick={() => fetchGrades()}>
+                                <option onClick={() => fetchGrades()} value=''>
                                     All subjects
                                 </option>
                                 {subjects.map((subject) => {
@@ -143,7 +144,7 @@ function ExamsT() {
                         {/* Exams */}
                         <select className="form-control d-flex justify-content-center pilih-t" name="exam_id" onChange={handleChange}>
                             <optgroup label="Filter by exams">
-                                <option onClick={() => fetchGrades()}>
+                                <option onClick={() => fetchGrades()} value=''>
                                     All exams
                                 </option>
 
@@ -160,7 +161,7 @@ function ExamsT() {
                         {/* Students */}
                         <select className="form-control d-flex justify-content-center pilih-t" name="user_id" onChange={handleChange}>
                             <optgroup label="Filter by students">
-                                <option onClick={() => fetchGrades()}>
+                                <option onClick={() => fetchGrades()} value=''>
                                     All students
                                 </option>
 
@@ -174,7 +175,7 @@ function ExamsT() {
                             </optgroup>
                         </select>
 
-                        <button className="tombol" onClick={() => fetchSearchGrades()}>Search</button>
+                        <button className="tombol" onClick={() => fetchGrades()}>Search</button>
                         <button className="tombol" onClick={defaultClick}>Reset</button>
                         <button className="tombol"> + Add exam results</button>
                     </div>

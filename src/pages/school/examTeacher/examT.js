@@ -4,19 +4,16 @@ import axios from "../../../config/axios";
 
 import './examT.css';
 import moment from "moment";
-import { Card } from "react-bootstrap";
+import { Card, Badge, Button } from "react-bootstrap";
 
 function ExamsT() {
     const { stream_id } = useSelector((state) => state.auth);
 
+    const [ count, setCount ] = useState([]);
     const [ exams, setExams ] = useState([]);
     const [ results, setResults ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
     const [ students, setStudents ] = useState([]);
-
-    const [ examFilter, setExamFilter ] = useState([]);
-    const [ studentFilter, setStudentFilter ] = useState([]);
-    const [ subjectFilter, setSubjectFilter ] = useState([]);
 
     const [ filter, setFilter ] = useState({
         exam_id: '',
@@ -24,42 +21,12 @@ function ExamsT() {
         subject_id: ''
     });
 
-    console.log(filter)
-    console.log(exams)
-    console.log(subjects)
-    console.log(students)
-
-    // useEffect(() => {
-    //     fetchExams();
-    //     fetchSubjects();
-    //     fetchStudentList();
-    //     fetchAllResults();
-    // }, []);
-
-    // useEffect(() => {
-    //     fetchStudentResults();
-    // }, [studentFilter]);
-
-    // useEffect(() => {
-    //     fetchSubjectResults();
-    // }, [subjectFilter]);
-
-    // useEffect(() => {
-    //     fetchExamIdResults();
-    // }, [examFilter]);
-
-    // // // // // // //
-
     useEffect(() => {
         fetchExamId();
         fetchSubjects();
         fetchStudentList();
-        // fetchGrades();
+        fetchGrades();
     }, []);
-
-    // useEffect(() => {
-    //     fetchSearchGrades();
-    // }, [filter]);
 
     const fetchSubjects = async () => {
 
@@ -99,63 +66,14 @@ function ExamsT() {
 
     };
 
-    // const fetchAllResults = async () => {
-
-    //     try {
-    //         const res = await axios.get(`/grades/stream/${stream_id}`);
-    //         const { data } = res
-        
-    //         setResults(data.grades);
-    //     } catch (error) {
-    //         console.log(alert(error.message));
-    //     }
-
-    // };
-
-    // const fetchSubjectResults = async () => {
-        
-    //     try {
-    //         const res = await axios.get(`/grades/subject/${subjectFilter}`)
-    //         const { data } = res
-        
-    //         setResults(data.grades);
-    //     } catch (error) {
-    //         console.log(alert(error.message));
-    //     }
-
-    // };
-
-    // const fetchStudentResults = async () => {
-
-    //     try {
-    //         const res = await axios.get(`/grades/${studentFilter}`)
-    //         const { data } = res
-        
-    //         setResults(data.grades);
-    //     } catch (error) {
-    //         console.log(alert(error.message));
-    //     }
-    // };
-
-    // const fetchExamIdResults = async () => {
-
-    //     try {
-    //         const res = await axios.get(`/grades/exam/${examFilter}`)
-    //         const { data } = res
-        
-    //         setResults(data.grades);
-    //     } catch (error) {
-    //         console.log(alert(error.message));
-    //     }
-    // };
-
     const fetchGrades = async () => {
 
         try {
-            const res = await axios.get('/grades/all')
+            const res = await axios.get(`/grades/${stream_id}`)
             const { data } = res
         
-            setResults(data.grades);
+            setCount(data.count[0]);
+            setResults(data.result);
         } catch (error) {
             console.log(alert(error.message));
         }
@@ -165,7 +83,7 @@ function ExamsT() {
     const fetchSearchGrades = async () => {
 
         try {
-            const res = await axios.get('/grades/search', {
+            const res = await axios.get('/grades/', {
                 params: {
                     exam_id: filter.exam_id,
                     user_id: filter.user_id,
@@ -174,7 +92,8 @@ function ExamsT() {
             })
             const { data } = res
         
-            setResults(data.grades);
+            setCount(data.count[0]);
+            setResults(data.result);
         } catch (error) {
             console.log(alert(error.message));
         }
@@ -187,19 +106,26 @@ function ExamsT() {
 
     const defaultClick = () => {
         setFilter({ exam_id: '', user_id: '', subject_id: '' })
+        fetchGrades();
     };
     
         return (
             <>
                 <h1>Exam Results</h1>
 
+                <div className="d-flex justify-content-center mt-4">
+                    <Button variant="outline-dark">
+                        Found <Badge bg="dark">{count.count}</Badge>
+                    </Button>
+                </div>
+
                 <div className="menu-exam-t">
                     <div className="d-flex flex-wrap col-12 my-5 justify-content-center">
                     
-                    <div className="w-100 d-flex justify-content-around mt-2 px-3 dd">
+                    <div className="w-100 d-flex justify-content-around px-3 dd">
                         
                         {/* Subject */}
-                        <select className="form-control d-flex justify-content-center pilih-t my-3" name="subject_id" onChange={handleChange}>
+                        <select className="form-control d-flex justify-content-center pilih-t" name="subject_id" onChange={handleChange}>
                             <optgroup label="Filter by subjects">
                                 <option onClick={() => fetchGrades()}>
                                     All subjects
@@ -215,7 +141,7 @@ function ExamsT() {
                         </select>
 
                         {/* Exams */}
-                        <select className="form-control d-flex justify-content-center pilih-t my-3" name="exam_id" onChange={handleChange}>
+                        <select className="form-control d-flex justify-content-center pilih-t" name="exam_id" onChange={handleChange}>
                             <optgroup label="Filter by exams">
                                 <option onClick={() => fetchGrades()}>
                                     All exams
@@ -232,7 +158,7 @@ function ExamsT() {
                         </select>
 
                         {/* Students */}
-                        <select className="form-control d-flex justify-content-center pilih-t my-3" name="user_id" onChange={handleChange}>
+                        <select className="form-control d-flex justify-content-center pilih-t" name="user_id" onChange={handleChange}>
                             <optgroup label="Filter by students">
                                 <option onClick={() => fetchGrades()}>
                                     All students
@@ -248,8 +174,9 @@ function ExamsT() {
                             </optgroup>
                         </select>
 
-                        <button className="tombol my-3" onClick={defaultClick}>Reset</button>
-                        <button className="tombol my-3"> + Add exam results</button>
+                        <button className="tombol" onClick={() => fetchSearchGrades()}>Search</button>
+                        <button className="tombol" onClick={defaultClick}>Reset</button>
+                        <button className="tombol"> + Add exam results</button>
                     </div>
 
                     {results.map((result) => {

@@ -14,15 +14,15 @@
     width: 170px;
     height: 40px;
     border: 0px;
-    border-radius: 2px;
 
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
     transition: all 200ms ease; 
 }
 
 .tombol:hover {
-    color: white;
+    color: black;
+    background-color: white;
 }
 
 .exam-cards-t {
@@ -40,6 +40,8 @@
     border: 0px;
     border-radius: 0px;
     width: 200px;
+
+    cursor: pointer;
 
     color: white;
     background-color: transparent;

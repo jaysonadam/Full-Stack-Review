@@ -23,6 +23,8 @@ import HomeStudent from "./pages/school/homeStudent/homeStudent";
 import HomeTeacher from "./pages/school/homeTeacher/homeTeacher";
 // import EditProducts from "./pages/emmerce/editProducts/editProducts";
 
+import ParticlesBackground from "./components/particles/particles";
+
 import { useDispatch } from "react-redux";
 import { keepLoginAction } from "./store/action/action";
 
@@ -67,6 +69,7 @@ function App() {
                 <Route path="/home-student" element={<HomeStudent />} />
                 <Route path="/home-teacher" element={<HomeTeacher />} />
                 {/* <Route path="/edit-products" element={<EditProducts />} /> */}
+                <Route path="/particles" element={<ParticlesBackground />} />
             </Routes>
         </Router>
         </>

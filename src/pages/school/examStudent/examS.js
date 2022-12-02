@@ -4,23 +4,24 @@ import axios from "../../../config/axios";
 
 import './examS.css';
 import moment from "moment";
-import { Card, Dropdown } from "react-bootstrap";
+import { Card, Dropdown, Badge, Button } from "react-bootstrap";
 
 function Exams() {
     const { id, fullname, stream_id } = useSelector((state) => state.auth);
 
-    const [ filter, setFilter ] = useState([]);
+    const [ count, setCount ] = useState(0);
+    const [ exams, setExams ] = useState([]);
     const [ results, setResults ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
 
-    useEffect(() => {
-        fetchSubjects();
-        fetchAllResults();
-    }, [])
+    const [ examId, setExamId ] = useState('');
+    const [ subjectId, setSubjectId ] = useState('');
 
     useEffect(() => {
-        fetchFilteredResults();
-    }, [filter])
+        fetchExamId();
+        fetchSubjects();
+        fetchGrades();
+    }, []);
 
     const fetchSubjects = async () => {
 
@@ -35,49 +36,83 @@ function Exams() {
 
     };
 
-    const fetchAllResults = async () => {
+    const fetchExamId = async () => {
 
         try {
-            const res = await axios.get(`/grades/${id}`);
+            const res = await axios.get(`/exam/${stream_id}`);
+            const { data } = res
+
+            setExams(data.exams)
+        } catch (error) {
+            console.log(alert(error.message));
+        }
+    };
+
+    const fetchGrades = async () => {
+
+        try {
+            const res = await axios.get('/grades/', {
+                params: {
+                    stream_id: stream_id,
+                    exam_id: examId,
+                    user_id: id,
+                    subject_id: subjectId
+                }
+            })
             const { data } = res
         
-            setResults(data.grades);
+            setCount(data.count[0]);
+            setResults(data.result);
         } catch (error) {
             console.log(alert(error.message));
         }
 
     };
 
-    const fetchFilteredResults = async () => {
-        
+    const fetchAllGrades = async () => {
+
         try {
-            const res = await axios.get(`/grades/${filter}/${id}`)
+            const res = await axios.get(`/grades/${stream_id}/${id}`)
             const { data } = res
         
-            setResults(data.grades);
-            console.log('c')
+            setCount(data.count[0]);
+            setResults(data.result);
         } catch (error) {
             console.log(alert(error.message));
         }
 
+    };
+
+    const subjectChange = (e) => {
+        setSubjectId(e)
+    };
+
+    const examChange = (e) => {
+        setExamId(e)
+    };
+
+    const defaultClick = () => {
+        setExamId('');
+        setSubjectId('');
+        fetchAllGrades();
     };
 
         return (
             <>
                 <h1>Exam Results</h1>
                 <h2 className="d-flex justify-content-center mt-5">{fullname}</h2>
-                <h4 className="d-flex justify-content-center my-3">Student ID : {id}</h4>
+                <h4 className="d-flex justify-content-center my-4">Student ID : {id}</h4>
 
-                <Dropdown className="d-flex justify-content-center mt-5">
+                <Dropdown className="d-flex justify-content-center mt-5" onSelect={subjectChange}>
                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant="success">
                         Filter by subject
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant="dark">
-                        <Dropdown.Item onClick={() => fetchAllResults()}>All</Dropdown.Item>
+                        <Dropdown.Item>All</Dropdown.Item>
                         {subjects.map((subject) => {
                             return (
-                                <Dropdown.Item value={subject.subject_id} onClick={() => setFilter(subject.subject_id)} name={subject.subject_id}>
+                                <Dropdown.Item eventKey={subject.subject_id}>
                                     {subject.subject_name}
                                 </Dropdown.Item>
                             )
@@ -85,8 +120,33 @@ function Exams() {
                     </Dropdown.Menu>
                 </Dropdown>
 
+                <Dropdown className="d-flex justify-content-center mt-4" onSelect={examChange}>
+                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant="success">
+                        Filter by exam
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu variant="dark">
+                        <Dropdown.Item >All</Dropdown.Item>
+                        {exams.map((exam) => {
+                            return (
+                                <Dropdown.Item eventKey={exam.exam_id}>
+                                    {exam.exam_name}
+                                </Dropdown.Item>
+                            )
+                        })}                      
+                    </Dropdown.Menu>
+                </Dropdown>
+                
+                <div className="d-flex justify-content-center my-4">
+                    <Button variant="outline-success" className="mx-2">
+                        Found <Badge bg="dark">{count.count}</Badge>
+                    </Button>
+                    <Button variant="danger" className="mx-2" onClick={() => fetchGrades()}>Search</Button>
+                    <Button variant="outline-danger" className="mx-2" onClick={defaultClick}>Back to all</Button>
+                </div>
+
                 <div className="menu-exam">
-                    <div class="d-flex flex-wrap col-9 my-5 justify-content-center">
+                    <div class="d-flex flex-wrap col-9 my-4 justify-content-center">
                     {results.map((result) => {
                         return (
                             <Card className="exam-cards">

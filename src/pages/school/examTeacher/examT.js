@@ -5,6 +5,7 @@ import axios from "../../../config/axios";
 import './examT.css';
 import moment from "moment";
 import { Card, Badge, Button } from "react-bootstrap";
+import ParticlesBackground from "../../../components/particles/particles";
 
 function ExamsT() {
     const { stream_id } = useSelector((state) => state.auth);
@@ -112,13 +113,8 @@ function ExamsT() {
     
         return (
             <>
-                <h1>Exam Results</h1>
-
-                <div className="d-flex justify-content-center mt-4">
-                    <Button variant="outline-dark">
-                        Found <Badge bg="dark">{count.count}</Badge>
-                    </Button>
-                </div>
+                <ParticlesBackground />
+                <h1>Exam Results <Badge bg="primary" className="mx-3">{count.count}</Badge></h1>
 
                 <div className="menu-exam-t">
                     <div className="d-flex flex-wrap col-12 my-5 justify-content-center">
@@ -184,10 +180,10 @@ function ExamsT() {
                         return (
                             <Card className="exam-cards-t">
                                 <Card.Body className="d-flex justify-content-around align-items-center">
-                                    <h6>{result.fullname}</h6>
-                                    <h6>Grade: {result.grades}</h6>
-                                    <h6>{result.exam_name}</h6>
-                                    <h6>Date: {moment(result.exam_date).utc(true).format('YYYY-MM-DD')}</h6>
+                                    <h6 className="m-0">{result.fullname}</h6>
+                                    <h6 className="m-0">Grade: {result.grades}</h6>
+                                    <h6 className="m-0">{result.exam_name}</h6>
+                                    <h6 className="m-0">Date: {moment(result.exam_date).utc(true).format('YYYY-MM-DD')}</h6>
                                 </Card.Body>
                             </Card>
                         )

@@ -176,18 +176,35 @@ function ExamsT() {
                         <button className="tombol"> + Add exam results</button>
                     </div>
 
-                    {results.map((result) => {
-                        return (
-                            <Card className="exam-cards-t">
-                                <Card.Body className="d-flex justify-content-around align-items-center">
-                                    <h6 className="m-0">{result.fullname}</h6>
-                                    <h6 className="m-0">Grade: {result.grades}</h6>
-                                    <h6 className="m-0">{result.exam_name}</h6>
-                                    <h6 className="m-0">Date: {moment(result.exam_date).utc(true).format('YYYY-MM-DD')}</h6>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })}
+                    <table id="exam-table">
+                        <tr>
+                            <th>
+                                Student Name
+                            </th>
+                            <th>
+                                Grade
+                            </th>
+                            <th>
+                                Exam
+                            </th>
+                            <th>
+                                Exam Date
+                            </th>
+                        </tr>
+
+                        {results.map((result) => {
+                            return (
+                                <tr>
+                                    <td>{result.fullname}</td>
+                                    <td>{result.grades}</td>
+                                    <td>{result.exam_name}</td>
+                                    <td>{moment(result.exam_date).utc(true).format('DD-MM-YYYY')}</td>
+                                </tr>
+                            )
+                        })}
+
+                    </table>
+
                     </div>
                 </div>
             </>

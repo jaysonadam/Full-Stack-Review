@@ -114,7 +114,7 @@ function Homework() {
                                 <Card key={index} className="hw-card">
                                     <h4>{hw.homework_name}</h4>
                                     <br></br>
-                                    <h6>Due date : {moment(hw.due_date).utc(true).format('YYYY-MM-DD')}</h6>
+                                    <h6>Due date : {moment(hw.due_date).utc(true).format('DD-MM-YYYY')}</h6>
                                     <OffCanvas 
                                         key={index}
                                         info={hw}

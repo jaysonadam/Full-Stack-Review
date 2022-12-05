@@ -28,7 +28,7 @@ function OffCanvas({info}) {
                         Submit through email.
                     <br></br>
                     <br></br>
-                        Due date : {moment(info.due_date).utc(true).format('YYYY-MM-DD')}
+                        Due date : {moment(info.due_date).utc(true).format('DD-MM-YYYY')}
                     <br></br>
                     <br></br>
                         <Button href="https://www.gmail.com">Submit</Button>

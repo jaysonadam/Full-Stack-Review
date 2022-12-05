@@ -4,8 +4,121 @@ import axios from "../../../config/axios";
 
 import './examT.css';
 import moment from "moment";
-import { Card, Badge, Button } from "react-bootstrap";
+import { Offcanvas, Badge, Button } from "react-bootstrap";
 import ParticlesBackground from "../../../components/particles/particles";
+
+function OffCanvas() {
+    const { stream_id } = useSelector((state) => state.auth);
+
+    const [ show, setShow ] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const toggleShow = () => setShow((s) => !s);
+
+    const [ studentList, setStudentList ] = useState([]);
+    const [ examList, setExamList ] = useState([]);
+
+    const [ addResults, setAddResults ] = useState({
+        user_id: '',
+        grade: '',
+        exam_id: ''
+    });
+
+    const [ button, setButton ] = useState(true);
+
+    const setTrue = () => {
+        if (addResults.exam_id && addResults.user_id && addResults.grade) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    }
+
+    console.log(addResults)
+
+    useEffect(() => {
+        fetchStudentList();
+        fetchExamId();
+    }, []);
+
+    useEffect(() => {
+        setTrue();
+    }, [addResults]);
+
+    const fetchStudentList = async () => {
+
+        try {
+            const res = await axios.get(`/users/all/${stream_id}`);
+            const { data } = res
+
+            setStudentList(data.users)
+        } catch (error) {
+            console.log(alert(error.message));
+        }
+
+    };
+
+    const fetchExamId = async () => {
+
+        try {
+            const res = await axios.get(`/exam/${stream_id}`);
+            const { data } = res
+
+            setExamList(data.exams)
+        } catch (error) {
+            console.log(alert(error.message));
+        }
+    };
+
+    const handleChange = (e) => {
+        setAddResults({ ...addResults, [e.target.name]: e.target.value })
+    };
+
+    return (
+        <>
+            <button onClick={toggleShow} className="tombol pilih-t">
+                + Add exam results
+            </button>
+            <Offcanvas show={show} onHide={handleClose} scroll="true" backdrop={true}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Add results</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <h6>Student:</h6>
+                    <select className="form-control d-flex justify-content-center" name="user_id" onChange={handleChange}>
+                        <option value=''>Choose</option>
+                        {studentList.map((students) => {
+                            return (
+                                <option key={students.user_id} value={students.user_id}>
+                                    {students.fullname}
+                                </option>
+                            )
+                        })}
+                    </select>
+                        <br></br>
+                    <h6>Exam:</h6>
+                    <select className="form-control d-flex justify-content-center" name="exam_id" onChange={handleChange}>
+                        <option value=''>Choose</option>
+                        {examList.map((exams) => {
+                            return (
+                                <option key={exams.exam_id} value={exams.exam_id}>
+                                    {exams.exam_name}
+                                </option>
+                            )
+                        })}
+                    </select>
+                        <br></br>
+                    <h6>Grade:</h6>
+                    <input name="grade" onChange={handleChange} className="form-control"></input>
+                        <br></br>
+                        <br></br>
+                    <Button disabled={button} style={{ width: '100%' }}>Submit</Button>
+                </Offcanvas.Body>
+            </Offcanvas>
+        </>
+    )
+};
 
 function ExamsT() {
     const { stream_id } = useSelector((state) => state.auth);
@@ -173,7 +286,7 @@ function ExamsT() {
 
                         <button className="tombol" onClick={() => fetchGrades()}>Search</button>
                         <button className="tombol" onClick={defaultClick}>Reset</button>
-                        <button className="tombol"> + Add exam results</button>
+                        <OffCanvas> + Add exam results</OffCanvas>
                     </div>
 
                     <table id="exam-table">

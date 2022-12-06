@@ -14,6 +14,7 @@ import Exams from "./pages/school/examStudent/examS";
 import ExamsT from "./pages/school/examTeacher/examT";
 import Profile from "./pages/school/profile/profile";
 import Subjects from "./pages/school/subjects/subjects";
+import Submit from "./pages/school/homework/submit/submit";
 // import Register from "./pages/emmerce/register/register";
 // import Products from "./pages/emmerce/products/products";
 import Navigation from "./components/navbar/navbar";
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/submit-hw" element={<Submit />} />
                 <Route path="/subjects" element={<Subjects />} />
                 <Route path="/exam-teacher" element={<ExamsT />} />
                 {/* <Route path="/reg" element={<Register />} /> */}

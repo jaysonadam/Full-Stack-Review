@@ -57,6 +57,8 @@ function OffCanvasAdd() {
         stream_id: stream_id
     });
 
+    console.log(addHomework)
+
     const [ button, setButton ] = useState(true);
 
     const setTrue = () => {
@@ -247,7 +249,7 @@ function Homework() {
         <>
             <h1>Homework</h1>
                 <div className="hw-menu">
-                    <div class="d-flex flex-wrap col-9 my-4 justify-content-center">
+                    <div class="d-flex flex-wrap col-9 mt-4 justify-content-center">
                         <Dropdown className="choose">
                             <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
                                 Filter by subject

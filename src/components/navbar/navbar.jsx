@@ -50,11 +50,14 @@ function Navigation() {
             <Navbar.Collapse id="basic-navbar-nav" bg="dark" variant="dark" className="justify-content-center">
               <Nav>
                 <Nav.Link style={{ marginInline: '10px' }} href="/home-teacher">Home</Nav.Link>
-                <Nav.Link style={{ marginInline: '10px' }} href="/homework">Homework</Nav.Link>
                 <Nav.Link style={{ marginInline: '10px' }} href="/exam-teacher">Exam</Nav.Link>
                 <Nav.Link style={{ marginInline: '10px' }} href="/attendance">Attendance</Nav.Link>
                 <Nav.Link style={{ marginInline: '10px' }} href="/events">Events</Nav.Link>
                 <Nav.Link style={{ marginInline: '10px' }} href="/subjects">Subjects</Nav.Link>
+                <NavDropdown style={{ marginRight: '30px' }} title="Homework">
+                  <NavDropdown.Item href="/homework">List & add new</NavDropdown.Item>
+                  <NavDropdown.Item href="/submit-hw">Submitted</NavDropdown.Item>
+                </NavDropdown>
               </Nav>
               <Nav className="ms-auto me-2">
                 <NavDropdown style={{ marginRight: '30px' }} title={`Signed in as: ${fullname}`}>

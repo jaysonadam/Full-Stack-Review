@@ -18,7 +18,6 @@ function OffCanvas() {
     const [ studentList, setStudentList ] = useState([]);
     const [ examList, setExamList ] = useState([]);
 
-    const [ checkResults, setCheckResults ] = useState([]);
     const [ addResults, setAddResults ] = useState({
         user_id: '',
         grade: '',
@@ -69,8 +68,6 @@ function OffCanvas() {
         }
 
     };
-
-    console.log(addResults)
 
     useEffect(() => {
         fetchStudentList();

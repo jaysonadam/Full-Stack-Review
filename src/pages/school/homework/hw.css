@@ -13,6 +13,17 @@
     padding: 15px;
 }
 
+.add-hw {
+    width: 200px;
+
+    margin-bottom: 30px;
+}
+
+.desc {
+    height: 150px;
+    text-align: start;
+}
+
 .choose {
     width: 100%;
 

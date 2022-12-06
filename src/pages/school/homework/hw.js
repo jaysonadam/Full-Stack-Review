@@ -47,6 +47,7 @@ function OffCanvasAdd() {
     const toggleShow = () => setShow((s) => !s);
 
     const [ subjectList, setSubjectList ] = useState([]);
+    const [ checkHomework, setCheckHomework ] = useState([]);
 
     const [ addHomework, setAddHomework ] = useState({
         homework_name: '',
@@ -55,8 +56,6 @@ function OffCanvasAdd() {
         subject_id: '',
         stream_id: stream_id
     });
-
-    console.log(addHomework)
 
     const [ button, setButton ] = useState(true);
 
@@ -76,11 +75,34 @@ function OffCanvasAdd() {
                     homework_name: addHomework.homework_name
                 }
             })
+
             const { data } = resCheck
 
-            if (data) {
+            setCheckHomework(data.hasil)
 
-                alert('Homework name already exist')
+            if (checkHomework) {
+
+                if (checkHomework.homework_name === addHomework.homework_name) {
+
+                    alert('Homework name already exist')
+
+                } else {
+
+                    try {
+                        const res = await axios.post('/homework/', {
+                            stream_id: addHomework.stream_id,
+                            subject_id: addHomework.subject_id,
+                            homework_name: addHomework.homework_name,
+                            homework_desc: addHomework.homework_desc,
+                            due_date: addHomework.due_date
+                        });
+            
+                        alert('Successfully added')
+                    } catch (error) {
+                        console.log(alert(error.message));
+                    }
+
+                }
 
             } else {
 
@@ -98,7 +120,7 @@ function OffCanvasAdd() {
                     console.log(alert(error.message));
                 }
 
-            };
+            }
 
         } catch (error) {
             console.log(alert(error.message));

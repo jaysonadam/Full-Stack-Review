@@ -18,6 +18,7 @@ function OffCanvas() {
     const [ studentList, setStudentList ] = useState([]);
     const [ examList, setExamList ] = useState([]);
 
+    const [ checkResults, setCheckResults ] = useState([]);
     const [ addResults, setAddResults ] = useState({
         user_id: '',
         grade: '',
@@ -32,7 +33,42 @@ function OffCanvas() {
         } else {
             setButton(true);
         }
-    }
+    };
+
+    const postResults = async () => {
+
+        try {
+            const resCheck = await axios.get('/grades/', {
+                params: {
+                    exam_id: addResults.exam_id,
+                    user_id: addResults.user_id
+                }
+            })
+            const { data } = resCheck
+
+            if (data) {
+                alert('Data already exist')
+            } else {
+
+                try {
+                    const res = await axios.post('/grades/', {
+                        user_id: addResults.user_id,
+                        grades: addResults.grade,
+                        exam_id: addResults.exam_id
+                    });
+        
+                    alert('Successfully added')
+                } catch (error) {
+                    console.log(alert(error.message));
+                }
+
+            };
+
+        } catch (error) {
+            console.log(alert(error.message));
+        }
+
+    };
 
     console.log(addResults)
 
@@ -113,7 +149,7 @@ function OffCanvas() {
                     <input name="grade" onChange={handleChange} className="form-control"></input>
                         <br></br>
                         <br></br>
-                    <Button disabled={button} style={{ width: '100%' }}>Submit</Button>
+                    <Button disabled={button} style={{ width: '100%' }} onClick={() => postResults()}>Submit</Button>
                 </Offcanvas.Body>
             </Offcanvas>
         </>

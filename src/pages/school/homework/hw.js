@@ -57,8 +57,6 @@ function OffCanvasAdd() {
         stream_id: stream_id
     });
 
-    console.log(addHomework)
-
     const [ button, setButton ] = useState(true);
 
     const setTrue = () => {
@@ -274,7 +272,7 @@ function Homework() {
                                 <Card key={index} className="hw-card">
                                     <h4>{hw.homework_name}</h4>
                                     <br></br>
-                                    <h6>Due date : {moment(hw.due_date).utc(true).format('DD-MM-YYYY')}</h6>
+                                    <h6>Due date : {moment(hw.due_date).utc(true).format('LLLL')}</h6>
                                     <OffCanvas 
                                         key={index}
                                         info={hw}
@@ -316,7 +314,7 @@ function Homework() {
                                     <Card key={index} className="hw-card">
                                         <h4>{hw.homework_name}</h4>
                                         <br></br>
-                                        <h6>Due date : {moment(hw.due_date).utc(true).format('DD-MM-YYYY')}</h6>
+                                        <h6>Due date : {moment(hw.due_date).utc(true).format('LLLL')}</h6>
                                         <OffCanvas 
                                             key={index}
                                             info={hw}

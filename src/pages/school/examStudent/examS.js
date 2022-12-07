@@ -153,7 +153,7 @@ function Exams() {
                                 <Card.Body className="d-flex justify-content-around align-items-center">
                                     <h5 className="m-0">{result.exam_name}</h5>
                                     <h5 className="m-0">Grade : {result.grades}</h5>
-                                    <h5 className="m-0">Date : {moment(result.exam_date).utc(true).format('DD-MM-YYYY')}</h5>
+                                    <h5 className="m-0">Date : {moment(result.exam_date).utc(true).format('LLLL')}</h5>
                                 </Card.Body>
                             </Card>
                         )

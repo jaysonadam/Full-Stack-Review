@@ -344,7 +344,7 @@ function ExamsT() {
                                     <td>{result.fullname}</td>
                                     <td>{result.grades}</td>
                                     <td>{result.exam_name}</td>
-                                    <td>{moment(result.exam_date).utc(true).format('DD-MM-YYYY')}</td>
+                                    <td>{moment(result.exam_date).utc(true).format('LLLL')}</td>
                                 </tr>
                             )
                         })}

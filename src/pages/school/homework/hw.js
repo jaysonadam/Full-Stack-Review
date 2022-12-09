@@ -49,84 +49,114 @@ function OffCanvasAdd() {
     const [ subjectList, setSubjectList ] = useState([]);
     const [ checkHomework, setCheckHomework ] = useState([]);
 
-    const [ addHomework, setAddHomework ] = useState({
+    const [ addHomework, setAddHomework ] = useState([
+        {
         homework_name: '',
         homework_desc: '',
         due_date: '',
         subject_id: '',
         stream_id: stream_id
-    });
+        }
+    ]);
 
-    const [ button, setButton ] = useState(true);
+    const [ button, setButton ] = useState(false);
 
     const setTrue = () => {
         if (addHomework.homework_name && addHomework.homework_desc && addHomework.due_date && addHomework.subject_id) {
             setButton(false);
         } else {
-            setButton(true);
+            setButton(false);
         }
     };
+
+    // const postHomework = async () => {
+
+    //     try {
+    //             const res = await axios.post('/homework/', {
+    //                 stream_id: addHomework.stream_id,
+    //                 subject_id: addHomework.subject_id,
+    //                 homework_name: addHomework.homework_name,
+    //                 homework_desc: addHomework.homework_desc,
+    //                 due_date: addHomework.due_date
+    //             });
+                    
+    //             alert('Successfully added')
+    //         } catch (error) {
+    //             console.log(alert(error.message));
+    //         }
+    // };
 
     const postHomework = async () => {
 
         try {
-            const resCheck = await axios.get('/homework/', {
-                params: {
-                    homework_name: addHomework.homework_name
-                }
-            })
-
-            const { data } = resCheck
-
-            setCheckHomework(data.hasil)
-
-            if (checkHomework) {
-
-                if (checkHomework.homework_name === addHomework.homework_name) {
-
-                    alert('Homework name already exist')
-
-                } else {
-
-                    try {
-                        const res = await axios.post('/homework/', {
-                            stream_id: addHomework.stream_id,
-                            subject_id: addHomework.subject_id,
-                            homework_name: addHomework.homework_name,
-                            homework_desc: addHomework.homework_desc,
-                            due_date: addHomework.due_date
-                        });
-            
-                        alert('Successfully added')
-                    } catch (error) {
-                        console.log(alert(error.message));
-                    }
-
-                }
-
-            } else {
-
-                try {
-                    const res = await axios.post('/homework/', {
-                        stream_id: addHomework.stream_id,
-                        subject_id: addHomework.subject_id,
-                        homework_name: addHomework.homework_name,
-                        homework_desc: addHomework.homework_desc,
-                        due_date: addHomework.due_date
-                    });
-        
-                    alert('Successfully added')
-                } catch (error) {
-                    console.log(alert(error.message));
-                }
-
+                const res = await axios.post('/homework/', );
+                    
+                alert('Successfully added')
+            } catch (error) {
+                console.log(alert(error.message));
             }
-
-        } catch (error) {
-            console.log(alert(error.message));
-        }
-
     };
+
+    // const postHomework = async () => {
+
+    //     try {
+    //         const resCheck = await axios.get('/homework/', {
+    //             params: {
+    //                 homework_name: addHomework.homework_name
+    //             }
+    //         })
+
+    //         const { data } = resCheck
+
+    //         setCheckHomework(data.hasil)
+
+    //         if (checkHomework) {
+
+    //             if (checkHomework.homework_name === addHomework.homework_name) {
+
+    //                 alert('Homework name already exist')
+
+    //             } else {
+
+    //                 try {
+    //                     const res = await axios.post('/homework/', {
+    //                         stream_id: addHomework.stream_id,
+    //                         subject_id: addHomework.subject_id,
+    //                         homework_name: addHomework.homework_name,
+    //                         homework_desc: addHomework.homework_desc,
+    //                         due_date: addHomework.due_date
+    //                     });
+            
+    //                     alert('Successfully added')
+    //                 } catch (error) {
+    //                     console.log(alert(error.message));
+    //                 }
+
+    //             }
+
+    //         } else {
+
+    //             try {
+    //                 const res = await axios.post('/homework/', {
+    //                     stream_id: addHomework.stream_id,
+    //                     subject_id: addHomework.subject_id,
+    //                     homework_name: addHomework.homework_name,
+    //                     homework_desc: addHomework.homework_desc,
+    //                     due_date: addHomework.due_date
+    //                 });
+        
+    //                 alert('Successfully added')
+    //             } catch (error) {
+    //                 console.log(alert(error.message));
+    //             }
+
+    //         }
+
+    //     } catch (error) {
+    //         console.log(alert(error.message));
+    //     }
+
+    // };
 
     useEffect(() => {
         fetchSubjects();

@@ -24,6 +24,8 @@ import HomeStudent from "./pages/school/homeStudent/homeStudent";
 import HomeTeacher from "./pages/school/homeTeacher/homeTeacher";
 // import EditProducts from "./pages/emmerce/editProducts/editProducts";
 
+import Addmoreinput from "./pages/school/test";
+
 import ParticlesBackground from "./components/particles/particles";
 
 import { useDispatch } from "react-redux";
@@ -72,6 +74,8 @@ function App() {
                 <Route path="/home-teacher" element={<HomeTeacher />} />
                 {/* <Route path="/edit-products" element={<EditProducts />} /> */}
                 <Route path="/particles" element={<ParticlesBackground />} />
+
+                <Route path="/test" element={<Addmoreinput />} />
             </Routes>
         </Router>
         </>
